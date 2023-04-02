@@ -1,3 +1,5 @@
+package aula;
+
 import javax.swing.*;
 
 public class Boletim {
@@ -6,7 +8,7 @@ public class Boletim {
     double n2;
     double media;
 
-//    public Boletim(double n1, double n2){
+//    public aula.Boletim(double n1, double n2){
 //        this.n1 = n1;
 //        this.n2 = n2;
 //    }
