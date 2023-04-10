@@ -1,6 +1,6 @@
 package aula02.desafio01;
 
-public class Quadrado {
+public class Quadrado extends Forma{
     private float base;
 
     //Construtor
