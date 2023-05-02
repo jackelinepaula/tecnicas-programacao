@@ -22,12 +22,40 @@ public class Vetor {
         }
     }
 
-    public void adiciona(int posicao, String elemento){
-
+    //Pegada do fura-fila
+    public void adiciona(int posicao, String elemento) throws Exception{
+        this.aumentarCapacidade();
+        if(posicao >= 0 && posicao < tamanho){
+            for(int i = tamanho - 1; i > posicao - 1; i--){
+                elementos[i+1] = elementos[i];
+            }
+            elementos[posicao] = elemento;
+            tamanho++;
+        } else {
+            throw new Exception("Posição inválida");
+        }
     }
 
-    public void remove(int posicao){
+    public void remove(int posicao)throws Exception{
+        if (posicao >= 0 && posicao < tamanho){
+            for (int i = posicao; i < this.tamanho - 1; i++){
+                this.elementos[i] = this.elementos[i+1];
+            }
+            this.tamanho--;
+        }else {
+            throw new Exception("Posição Invalida");
+        }
+    }
 
+    //Aumentar capacidade
+    private void aumentarCapacidade(){
+        if(tamanho == elementos.length){
+            String[] elementosNovos = new String[elementos.length * 2];
+            for(int i = 0; i < elementos.length; i++){
+                elementosNovos[i] = elementos[i];
+            }
+            elementos = elementosNovos;
+        }
     }
 
     public String busca(int posicao) throws Exception{
@@ -38,10 +66,10 @@ public class Vetor {
         }
     }
 
-    public int busca(String elemento){
+    public int buscaString(String elemento){
         for(int i = 0; i < this.tamanho; i++) {
-            if(elementos[i].equals(elemento)){
-                return i;
+            if(elementos[i].equalsIgnoreCase(elemento)){
+                return + i;
             }
         }
         return -1;
